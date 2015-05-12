@@ -7,7 +7,7 @@ use Exporter qw/import/;
 use List::MoreUtils qw/uniq/;
 
 our $VERSION = "0.01";
-our @EXPORT_OK = qw/intersection/;
+our @EXPORT_OK = qw/intersection difference/;
 
 sub intersection {
     my @all = map{ @{$_} } @_;
@@ -21,6 +21,21 @@ sub intersection {
 
     return @intersection;
 }
+
+sub difference {
+    my ($base_set, $remove_set) = @_;
+
+    my %remove_fg = map { $_ => 0 } @$base_set;
+
+    for my $value (@$remove_set) {
+        $remove_fg{$value} = 1;
+    }
+
+    my @difference = grep { !$remove_fg{$_} } @$base_set;
+
+    return @difference;
+}
+
 
 1;
 __END__
