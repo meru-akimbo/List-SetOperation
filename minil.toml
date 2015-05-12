@@ -1,0 +1,6 @@
+name = "List-SetOperation"
+# badges = ["travis"]
+authority="cpan:MERU"
+
+module_maker="ModuleBuildTiny"
+
