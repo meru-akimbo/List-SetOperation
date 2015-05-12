@@ -39,5 +39,45 @@ subtest 'empty set' => sub {
     is_deeply \@difference, [];
 };
 
+subtest 'more than two set' => sub {
+    my @difference = difference(
+        [
+            [1, 2, 3, 4, 5],
+            [3, 4, 5],
+        ],
+        [1, 3]
+    );
+
+    is scalar @difference, 3;
+    is_deeply \@difference, [2, 4, 5];
+
+    @difference = difference(
+        [
+          [1, 2, 3, 4, 5],
+          [3, 4, 5],
+        ],
+        [
+          [1, 3],
+          [2, 4],
+        ]
+    );
+
+    is scalar @difference, 1;
+    is_deeply \@difference, [5];
+
+    @difference = difference(
+        [1, 2, 3, 4, 5],
+        [
+          [1, 3],
+          [2, 4]
+        ]
+    );
+
+    is scalar @difference, 1;
+    is_deeply \@difference, [5];
+
+};
+
+
 done_testing;
 

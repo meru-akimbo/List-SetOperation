@@ -25,6 +25,12 @@ sub intersection {
 sub difference {
     my ($base_set, $remove_set) = @_;
 
+    $base_set = (scalar grep { ref $_ eq 'ARRAY' } @$base_set)
+        ? [union(@$base_set)] : $base_set;
+
+    $remove_set = (scalar grep { ref $_ eq 'ARRAY' } @$remove_set)
+        ? [union(@$remove_set)] : $remove_set;
+
     my %remove_fg = map { $_ => 0 } @$base_set;
 
     for my $value (@$remove_set) {
@@ -36,7 +42,9 @@ sub difference {
     return @difference;
 }
 
-sub union { uniq map { @{$_} } @_ }
+sub union {
+    return uniq map { @{$_} } @_ ;
+}
 
 1;
 __END__

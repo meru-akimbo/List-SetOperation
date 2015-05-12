@@ -32,6 +32,20 @@ List::SetOperation - simple set operation
 
     is_deeply \@difference, [1, 2];
 
+
+    @difference = difference(
+        [
+          [1, 2, 3, 4, 5],
+          [3, 4, 5],
+        ],
+        [
+          [1, 3],
+          [2, 4],
+        ]
+    );
+
+    is_deeply \@difference, [5];
+
 # DESCRIPTION
 
 List::SetOperation does set operation.
