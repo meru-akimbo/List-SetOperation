@@ -10,14 +10,11 @@ our $VERSION = "0.01";
 our @EXPORT_OK = qw/intersection/;
 
 sub intersection {
-    my @all;
-    my %count;
+    my @all = map{ @{$_} } @_;
 
-    for my $set (@_) {
-        for my $value (@$set) {
-            $count{$value}++;
-        }
-        push @all, @$set;
+    my %count;
+    for my $value (@all) {
+        $count{$value}++;
     }
 
     my @intersection = grep { $count{$_} == scalar @_ } uniq @all;
