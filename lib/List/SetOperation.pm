@@ -42,9 +42,7 @@ sub difference {
     return @difference;
 }
 
-sub union {
-    return uniq map { @{$_} } @_ ;
-}
+sub union { uniq map { @{$_} } @_ }
 
 1;
 __END__
