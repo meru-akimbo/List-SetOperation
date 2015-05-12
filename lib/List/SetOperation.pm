@@ -7,7 +7,7 @@ use Exporter qw/import/;
 use List::MoreUtils qw/uniq/;
 
 our $VERSION = "0.01";
-our @EXPORT_OK = qw/intersection difference/;
+our @EXPORT_OK = qw/intersection difference union/;
 
 sub intersection {
     my @all = map{ @{$_} } @_;
@@ -36,6 +36,7 @@ sub difference {
     return @difference;
 }
 
+sub union { uniq map { @{$_} } @_ }
 
 1;
 __END__
