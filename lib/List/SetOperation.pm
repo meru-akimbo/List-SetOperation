@@ -3,9 +3,27 @@ use 5.008001;
 use strict;
 use warnings;
 
+use Exporter qw/import/;
+use List::MoreUtils qw/uniq/;
+
 our $VERSION = "0.01";
+our @EXPORT_OK = qw/intersection/;
 
+sub intersection {
+    my @all;
+    my %count;
 
+    for my $set (@_) {
+        for my $value (@$set) {
+            $count{$value}++;
+        }
+        push @all, @$set;
+    }
+
+    my @intersection = grep { $count{$_} == scalar @_ } uniq @all;
+
+    return @intersection;
+}
 
 1;
 __END__
