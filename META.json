@@ -52,6 +52,17 @@
       }
    },
    "release_status" : "unstable",
+   "resources" : {
+      "bugtracker" : {
+         "web" : "https://github.com/meru-akimbo/LIst-SetOperation/issues"
+      },
+      "homepage" : "https://github.com/meru-akimbo/LIst-SetOperation",
+      "repository" : {
+         "type" : "git",
+         "url" : "git://github.com/meru-akimbo/LIst-SetOperation.git",
+         "web" : "https://github.com/meru-akimbo/LIst-SetOperation"
+      }
+   },
    "version" : "0.01",
    "x_authority" : "cpan:MERU"
 }
